@@ -1,0 +1,3 @@
+2022-01-27 17:08:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COUNTRIES" not found; SQL statement:
+select country0_.id as id1_0_, country0_.country_acronym as country_2_0_, country0_.name as name3_0_, country0_.population as populati4_0_ from countries country0_ [42102-200]
