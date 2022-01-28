@@ -1,7 +1,9 @@
 package com.mortality.model;
 
 import com.mortality.domain.SexEnum;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -17,7 +19,7 @@ public class Mortality {
     @Enumerated(EnumType.STRING)
     private SexEnum sex;
 
-    private int mortality;
+    private long mortality;
 
     private int year;
 

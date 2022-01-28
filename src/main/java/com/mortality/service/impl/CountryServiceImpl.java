@@ -5,8 +5,10 @@ import com.mortality.repository.CountryRepository;
 import com.mortality.service.CountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +22,17 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
+    @Transactional
     public Country save(Country country) {
+        Optional<Country> countryOptional = countryRepository.findByName(country.getName());
+
+        if (countryOptional.isPresent()) {
+            Country dbCountry = countryOptional.get();
+            dbCountry.setCountryAcronym(country.getCountryAcronym());
+            dbCountry.setPopulation(country.getPopulation());
+            return dbCountry;
+        }
+
         return countryRepository.save(country);
     }
 

@@ -9,15 +9,5 @@ insert into mortalities(sex, year, mortality, country_id) values('MALE', 2021, 2
 insert into mortalities(sex, year, mortality, country_id) values('FEMALE', 2021, 38456, 2);
 insert into mortalities(sex, year, mortality, country_id) values('MALE', 2021, 48456, 2);
 insert into mortalities(sex, year, mortality, country_id) values('FEMALE', 2021, 23456, 3);
-insert into mortalities(sex, year, mortality, country_id) values('MALE', 2021, 28456, 3);
 insert into mortalities(sex, year, mortality, country_id) values('FEMALE', 2021, 38456, 4);
 insert into mortalities(sex, year, mortality, country_id) values('MALE', 2021, 48456, 4);
-
-insert into mortalities(sex, year, mortality, country_id) values('FEMALE', 2020, 13456, 1);
-insert into mortalities(sex, year, mortality, country_id) values('MALE', 2020, 22456, 1);
-insert into mortalities(sex, year, mortality, country_id) values('FEMALE', 2020, 308456, 2);
-insert into mortalities(sex, year, mortality, country_id) values('MALE', 2020, 148456, 2);
-insert into mortalities(sex, year, mortality, country_id) values('FEMALE', 2020, 223456, 3);
-insert into mortalities(sex, year, mortality, country_id) values('MALE', 2020, 328456, 3);
-insert into mortalities(sex, year, mortality, country_id) values('FEMALE', 2020, 438456, 4);
-insert into mortalities(sex, year, mortality, country_id) values('MALE', 2020, 458456, 4);

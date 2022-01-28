@@ -24,7 +24,7 @@ public class Country {
 
     private int population;
 
-    @OneToMany(mappedBy="country")
+    @OneToMany(mappedBy="country", fetch = FetchType.LAZY)
     @JsonIgnore
     List<Mortality> mortalities = new ArrayList<>();
 }
