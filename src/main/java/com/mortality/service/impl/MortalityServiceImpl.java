@@ -36,22 +36,27 @@ public class MortalityServiceImpl implements MortalityService {
     }
 
     private MortalityTax getMortalityTax(int year, Country country) {
+
+        // initialize mortality tax
         MortalityTax mortalityTax = MortalityTax.builder()
                 .country(country.getName())
                 .femaleTax("0,00")
                 .maleTax("0,00")
                 .build();
 
+        // get mortalities from datatbase
         Optional<Mortality> optionalFemaleMortality = mortalityRepository
                 .findByYearAndCountryIdAndSex(year, country.getId(), SexEnum.FEMALE);
         Optional<Mortality> optionalMaleMortality = mortalityRepository
                 .findByYearAndCountryIdAndSex(year, country.getId(), SexEnum.MALE);
 
+        // fill female tax
         if (optionalFemaleMortality.isPresent()) {
             double tax = calculateTax(country.getPopulation(), optionalFemaleMortality.get().getMortality());
             mortalityTax.setFemaleTax(df.format(tax));
         }
 
+        // fill male tax
         if (optionalMaleMortality.isPresent()) {
             double tax = calculateTax(country.getPopulation(), optionalMaleMortality.get().getMortality());
             mortalityTax.setMaleTax(df.format(tax));
@@ -66,6 +71,7 @@ public class MortalityServiceImpl implements MortalityService {
         Optional<Mortality> dbData = mortalityRepository
                 .findByYearAndCountryIdAndSex(mortality.getYear(), mortality.getCountry().getId(), mortality.getSex());
 
+        // if present update
         if(dbData.isPresent()) {
             Long value = mortality.getMortality();
             Mortality dbMortality = dbData.get();
@@ -73,6 +79,7 @@ public class MortalityServiceImpl implements MortalityService {
             return dbMortality;
         }
 
+        // not create
         return mortalityRepository.save(mortality);
     }
 

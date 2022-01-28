@@ -26,6 +26,7 @@ public class CountryServiceImpl implements CountryService {
     public Country save(Country country) {
         Optional<Country> countryOptional = countryRepository.findByName(country.getName());
 
+        // if present update
         if (countryOptional.isPresent()) {
             Country dbCountry = countryOptional.get();
             dbCountry.setCountryAcronym(country.getCountryAcronym());
@@ -33,6 +34,7 @@ public class CountryServiceImpl implements CountryService {
             return dbCountry;
         }
 
+        // else create
         return countryRepository.save(country);
     }
 
